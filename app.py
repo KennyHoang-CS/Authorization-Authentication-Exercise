@@ -79,7 +79,7 @@ def login():
     # If request is a post and form submitted with valid csrf token. 
     if form.validate_on_submit():
         name = form.username.data
-        password = form.username.data
+        password = form.password.data
 
         # authenticate will return a user or False
         user = User.authenticate(name, password)
@@ -157,5 +157,3 @@ def delete_feedback(feedback_id):
         return redirect(f'/users/{feedback.username}')    
     else:
         return redirect('/')
-
-    

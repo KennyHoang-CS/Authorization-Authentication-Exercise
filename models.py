@@ -38,6 +38,7 @@ class User(db.Model):
         """
         u = User.query.filter_by(username=username).first()
 
+        #if u and bcrypt.check_password_hash(u.password, password):
         if u and bcrypt.check_password_hash(u.password, password):
             # return user instance
             return u
@@ -100,6 +101,4 @@ class Feedback(db.Model):
         db.String(20),
         db.ForeignKey('users.username')
     )
-    
-
     
