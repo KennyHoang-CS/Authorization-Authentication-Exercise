@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}User Registration{% endblock %}
+{% block content %}
+    <h1>New User Register</h1>
+    <form method="POST">
+        {{ form.csrf_token }}
+        {% for field in form 
+            if field.widget.input_type != 'hidden' %}
+        <p>
+            {{field.label}}
+            {{field}}
+
+            {% for err in field.errors %}
+            {{err}}
+            {% endfor %}
+
+        </p>
+        {% endfor %}
+    <button>Register</button>
+    <a href="/login">Go to Login Page.</a>
+    </form>
+{% endblock %}
